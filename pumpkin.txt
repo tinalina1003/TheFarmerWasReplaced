@@ -1,0 +1,32 @@
+
+pumpkin_counter = 0
+def pumpkin():
+	global pumpkin_counter
+	while True:
+		for i in range(get_world_size()):
+			# plant pumpkin loops
+			if pumpkin_counter == (get_world_size()**2):
+				harvest()
+				pumpkin_counter = 0
+			elif get_entity_type() == Entities.Grass and get_ground_type() == Grounds.Grassland:
+				harvest()
+				till()
+				plant(Entities.Pumpkin)
+				
+			elif get_entity_type() != Entities.Pumpkin:
+				harvest()
+				plant(Entities.Pumpkin)
+				pumpkin_counter = 0
+				
+			elif get_entity_type() == Entities.Pumpkin:
+				pumpkin_counter += 1	
+				
+			#print(pumpkin_counter)
+			move(North)
+			
+		move(East)
+	
+
+pumpkin()
+
+	

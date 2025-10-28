@@ -1,0 +1,27 @@
+# plant trees but also carrots to be efficient
+# will plant in all empty spaces between trees
+# trees require 2x2 to grow max
+def tree():
+	while True:
+		for i in range(get_world_size()):
+			
+			harvest()
+			# i use odd numbers so the tree has room to
+			# grow
+			if get_pos_x()%2 == 1 and get_pos_y()%2 == 1:
+				plant(Entities.Tree)
+				#use_item(Items.Fertilizer)
+				move(North)
+			else:
+				if get_entity_type() == Entities.Grass:
+					till()
+					plant(Entities.Carrot)
+					#use_item(Items.Fertilizer)
+				else:
+					plant(Entities.Carrot)
+					#use_item(Items.Fertilizer)
+				move(North)	
+		move(East)
+		
+		
+tree()

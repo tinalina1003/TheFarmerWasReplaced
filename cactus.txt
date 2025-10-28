@@ -1,0 +1,74 @@
+
+def plant_cactus():
+	plant_col_index = 0
+	while plant_col_index < get_world_size():
+		# check to see whats on the ground/ planted
+		if get_entity_type() != Entities.Cactus or get_ground_type() == Grounds.Grassland:
+			for i in range(get_world_size()):
+				harvest()
+				till()
+				plant(Entities.Cactus)
+				move(North)
+			move(East)
+			plant_col_index += 1
+			
+		elif get_entity_type() == None:
+			for i in range(get_world_size()):
+				plant(Entities.Cactus)
+				move(North)
+			move(East)
+			plant_col_index += 1
+		
+		else:
+			# the break is here just in case I'm already farming for something then it'll just jump to the sorting + harvesting
+			break
+
+			
+
+def swap_cactus():
+	col_count = 0
+
+	while col_count < get_world_size() - 1: 
+			# if hits the top, don't swap, go top OR if at bottom, just move 1 up
+		if col_count == get_world_size() - 1:
+			break
+			# if current height > north, and not at the top, swap with north
+		elif measure() > measure(North) and get_pos_y() != get_world_size() - 1:
+			swap(North)
+	
+			# if current is smaller than south, swap south and if its not at the bottom of the world
+		elif measure() < measure(South) and get_pos_y() != 0:
+			swap(South)
+			move(South)
+				
+			# if it is at the top, just move up one and move right one 
+		elif get_pos_y() == get_world_size() - 1:
+			move(North)
+			move(East)
+			col_count += 1
+			#print(col_count)
+
+		else:
+			move(North)
+
+
+def harvest_cact():
+	harvest_cact_col_count = 0
+	
+	while harvest_cact_col_count < get_world_size():
+		for i in range(get_world_size()):
+			harvest()
+			plant(Entities.Cactus)
+			move(North)
+		move(East)
+		harvest_cact_col_count += 1
+		
+		
+def cact_loop():
+	plant_cactus()
+	while True:
+		swap_cactus()
+		harvest_cact()
+		
+cact_loop()
+			

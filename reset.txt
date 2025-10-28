@@ -1,0 +1,33 @@
+# moves drone to a certain coordinate
+
+def dist(x1,y1):
+	
+	# edge case where it's not possible to find coordinate
+	if x1 > get_world_size() - 1 or y1 > get_world_size() - 1:
+		print("Invalid coordinate")
+	
+	# find dist of coord and move to said location
+	else:
+		# current pos
+		x2 = get_pos_x()
+		y2= get_pos_y()
+		
+		
+		# find dist between each coord
+		dx = abs(x2 - x1)
+		dy = abs(y2 - y1)
+		
+		for i in range(dx):
+			if x1 > x2:
+				move(East)
+				
+			elif x2 > x1:
+				move(West)
+		
+		for j in range(dy):
+			if y1 > y2:
+				move(North)
+			elif y2 > y1:
+				move(South)
+
+dist(0,0)

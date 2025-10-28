@@ -1,0 +1,46 @@
+def plant_sunflower():
+	sf_plant_col_count = 0
+	while sf_plant_col_count < get_world_size():
+		if get_ground_type() == Grounds.Grassland:
+			grasstile_sunflower()
+			sf_plant_col_count += 1
+			
+		elif get_ground_type() == Grounds.Soil and get_entity_type() == None:
+			soiltile_sunflower()
+			sf_plant_col_count += 1
+			
+		else:
+			break
+	
+def grasstile_sunflower():
+	for i in range(get_world_size()):
+		harvest()
+		till()
+		plant(Entities.Sunflower)
+		#use_item(Items.Fertilizer)
+		move(North)
+	move(East)
+	
+def soiltile_sunflower():
+	for i in range(get_world_size()):
+		harvest()
+		plant(Entities.Sunflower)
+		#use_item(Items.Fertilizer)
+		move(North)
+	move(East)
+	
+def harvest_sunflower():
+	harvest_sf_col_count = 0
+	
+	while harvest_sf_col_count < get_world_size():
+		soiltile_sunflower()
+		harvest_sf_col_count += 1
+		
+		
+def sunflower_loop():
+	plant_sunflower()
+	while True:
+		harvest_sunflower()
+		
+		
+sunflower_loop()

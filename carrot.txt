@@ -1,0 +1,16 @@
+from tree import tree # plant tree module
+
+def carrot():
+	for i in range(get_world_size()):
+		harvest()
+		# get cost to see if I need to jump to lower tier of mats
+		if num_items(Items.Wood) < get_cost(Entities.Carrot)[Items.Wood] or num_items(Items.Hay) < get_cost(Entities.Carrot)[Items.Hay]:
+			tree()
+		# if the current ground is grass
+		# till; i did this because it keeps
+		# double tilling
+		if get_entity_type() == Entities.Grass:
+			till()
+		plant(Entities.Carrot)
+		move(North)
+	move(East)

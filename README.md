@@ -2,6 +2,7 @@
 
 The Farmer Was Replaced is a game developed by Timon Herzog and published by Metaroot that asks the user to program and optimize a drone to automate a farm and watch it harvest by itself. By collecting resources, the user is able to unlock better technology to optimize efficiency. This game ultimately improves problem solving and coding skills. Note this game uses the Python programming language. Since this is a game, not all python libraries are available such as Numpy so arrays cannot be used. Note that the drone is also a physical pointer therefore conventional searching and sorting methods cannot be used.
 
+<hr>
 <h3>Trees</h3>
 
 Trees are a better way to get wood than bushes. They give 5 wood each. Like bushes, they can be planted on grass or soil.

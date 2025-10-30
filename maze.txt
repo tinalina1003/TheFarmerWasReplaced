@@ -1,0 +1,37 @@
+def distToTreasure():
+	x1 = get_pos_x()
+	y1 = get_pos_y()
+	
+	x2, y2 = measure()
+	
+	dx = abs(x2-x1)
+	dy = abs(y2-y1)
+	
+	dist0 = dx + dy
+	
+	return dist0
+
+
+def searchTreasure(curdist):
+	
+	
+	index = 0
+	directions = [North, East, South, West]
+
+	# 1. initialize an empty queue and visited hash set
+	queue = []
+	visited = set()
+	# 2. add start position visited hash set
+	visited.add((get_pos_x(), get_pos_y()))
+	# 3. store original dist at the start pos to a variable called oldDist
+	# 4. add available directions into queue and their coordinates
+			
+	# if can_move(each direction)
+	# North = (get_pos_x(), get_pos_y() + 1)
+	# East = (get_pos_x() + 1, get_pos_y())
+	# South = (get_pos_x(), get_pos_y() - 1)
+	# West = (get_pos_x() - 1, get_pos_y())
+
+
+searchTreasure(distToTreasure())
+
